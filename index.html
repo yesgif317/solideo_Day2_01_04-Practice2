@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="국내 및 해외 여행을 위한 맞춤형 여행 플래너">
+    <title>글로벌 여행 플래너 - Global Travel Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">✈️</span>
+                    <span class="logo-text">Global Travel Planner</span>
+                </h1>
+                <nav class="nav">
+                    <button class="nav-btn active" data-tab="planner">여행 계획</button>
+                    <button class="nav-btn" data-tab="my-trips">내 여행</button>
+                    <button class="nav-btn" data-tab="recommendations">추천</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Travel Planner Tab -->
+            <section id="planner-tab" class="tab-content active">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <h2 class="hero-title">어디로 떠나시나요?</h2>
+                    <p class="hero-subtitle">국내/해외 여행을 한 곳에서 계획하세요</p>
+                </div>
+
+                <!-- Travel Type Toggle -->
+                <div class="travel-type-toggle">
+                    <button class="type-btn active" data-type="domestic">
+                        <span class="icon">🇰🇷</span>
+                        국내 여행
+                    </button>
+                    <button class="type-btn" data-type="international">
+                        <span class="icon">🌏</span>
+                        해외 여행
+                    </button>
+                </div>
+
+                <!-- Main Planning Form -->
+                <div class="planning-form">
+                    <!-- Location Input Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">출발지 및 목적지</h3>
+
+                        <!-- Departure Input -->
+                        <div class="input-group">
+                            <label for="departure" class="input-label">
+                                <span class="icon">📍</span>
+                                출발지
+                            </label>
+                            <div class="autocomplete-wrapper">
+                                <input
+                                    type="text"
+                                    id="departure"
+                                    class="form-input location-input"
+                                    placeholder="건물명 또는 주소 입력 (예: 서울역, 인천공항)"
+                                    autocomplete="off"
+                                />
+                                <div class="autocomplete-dropdown" id="departure-dropdown"></div>
+                            </div>
+
+                            <!-- Recent Searches -->
+                            <div class="recent-searches" id="recent-departures">
+                                <span class="recent-label">최근 검색:</span>
+                                <div class="recent-items"></div>
+                            </div>
+
+                            <!-- Popular Presets -->
+                            <div class="presets">
+                                <span class="preset-label">인기 출발지:</span>
+                                <div class="preset-buttons" id="departure-presets"></div>
+                            </div>
+                        </div>
+
+                        <!-- Destination Input -->
+                        <div class="input-group">
+                            <label for="destination" class="input-label">
+                                <span class="icon">🎯</span>
+                                도착지
+                            </label>
+                            <div class="autocomplete-wrapper">
+                                <input
+                                    type="text"
+                                    id="destination"
+                                    class="form-input location-input"
+                                    placeholder="여행지 입력 (예: 부산 해운대 그랜드 호텔)"
+                                    autocomplete="off"
+                                />
+                                <div class="autocomplete-dropdown" id="destination-dropdown"></div>
+                            </div>
+
+                            <!-- Recent Searches -->
+                            <div class="recent-searches" id="recent-destinations">
+                                <span class="recent-label">최근 검색:</span>
+                                <div class="recent-items"></div>
+                            </div>
+
+                            <!-- Popular Presets -->
+                            <div class="presets">
+                                <span class="preset-label">인기 도착지:</span>
+                                <div class="preset-buttons" id="destination-presets"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date and Time Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">날짜 및 시간</h3>
+
+                        <div class="date-time-grid">
+                            <div class="input-group">
+                                <label for="departure-date" class="input-label">
+                                    <span class="icon">📅</span>
+                                    출발 날짜
+                                </label>
+                                <input
+                                    type="date"
+                                    id="departure-date"
+                                    class="form-input date-input"
+                                />
+                            </div>
+
+                            <div class="input-group">
+                                <label for="departure-time" class="input-label">
+                                    <span class="icon">🕐</span>
+                                    출발 시간
+                                </label>
+                                <select id="departure-time" class="form-input time-select">
+                                    <option value="">시간 선택</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Duration Selection -->
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="icon">⏱️</span>
+                                여행 기간
+                            </label>
+                            <div class="duration-presets">
+                                <button class="preset-btn" data-days="1">당일치기</button>
+                                <button class="preset-btn" data-days="2">1박2일</button>
+                                <button class="preset-btn" data-days="4">3박4일</button>
+                                <button class="preset-btn" data-days="7">1주일</button>
+                                <button class="preset-btn" data-days="14">2주</button>
+                            </div>
+                            <div class="slider-container">
+                                <input
+                                    type="range"
+                                    id="duration-slider"
+                                    class="duration-slider"
+                                    min="1"
+                                    max="30"
+                                    value="4"
+                                />
+                                <div class="slider-value">
+                                    <span id="duration-value">4</span>일
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information Section -->
+                    <div class="form-section">
+                        <h3 class="section-title">추가 정보</h3>
+
+                        <div class="additional-info-grid">
+                            <!-- Travelers Count -->
+                            <div class="input-group">
+                                <label class="input-label">
+                                    <span class="icon">👥</span>
+                                    여행 인원
+                                </label>
+                                <div class="counter">
+                                    <button class="counter-btn" id="travelers-minus">-</button>
+                                    <span class="counter-value" id="travelers-count">2</span>
+                                    <button class="counter-btn" id="travelers-plus">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Budget Range -->
+                            <div class="input-group budget-group">
+                                <label class="input-label">
+                                    <span class="icon">💰</span>
+                                    예산 범위
+                                </label>
+                                <div class="budget-input-container">
+                                    <input
+                                        type="number"
+                                        id="budget-input"
+                                        class="form-input budget-input"
+                                        placeholder="예산 입력"
+                                    />
+                                    <span class="budget-currency" id="budget-currency">만원</span>
+                                </div>
+                                <div class="slider-container">
+                                    <input
+                                        type="range"
+                                        id="budget-slider"
+                                        class="budget-slider"
+                                        min="10"
+                                        max="500"
+                                        value="100"
+                                        step="10"
+                                    />
+                                    <div class="slider-labels">
+                                        <span class="slider-min" id="budget-min">10만원</span>
+                                        <span class="slider-max" id="budget-max">500만원</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <div class="form-actions">
+                        <button class="btn-primary btn-search" id="search-btn">
+                            <span class="btn-icon">🔍</span>
+                            <span>여행 계획 시작하기</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="results-section" style="display: none;">
+                    <!-- Transportation Options -->
+                    <div class="results-panel">
+                        <h3 class="panel-title">
+                            <span class="icon">🚄</span>
+                            교통 수단 옵션
+                        </h3>
+
+                        <!-- Transportation Filter -->
+                        <div class="transport-filter">
+                            <button class="filter-btn active" data-filter="all">전체</button>
+                            <button class="filter-btn" data-filter="flight">항공</button>
+                            <button class="filter-btn" data-filter="train">기차</button>
+                            <button class="filter-btn" data-filter="bus">버스</button>
+                            <button class="filter-btn" data-filter="car">자동차</button>
+                        </div>
+
+                        <!-- Transportation Cards -->
+                        <div class="transport-cards" id="transport-cards">
+                            <!-- Cards will be dynamically generated -->
+                        </div>
+                    </div>
+
+                    <!-- Map and Timeline -->
+                    <div class="results-panel">
+                        <h3 class="panel-title">
+                            <span class="icon">🗺️</span>
+                            경로 및 타임라인
+                        </h3>
+
+                        <!-- View Toggle -->
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="map">지도</button>
+                            <button class="view-btn" data-view="timeline">타임라인</button>
+                        </div>
+
+                        <!-- Map View -->
+                        <div id="map-view" class="map-container">
+                            <div id="google-map"></div>
+                        </div>
+
+                        <!-- Timeline View -->
+                        <div id="timeline-view" class="timeline-container" style="display: none;">
+                            <div class="timeline" id="timeline"></div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="results-panel">
+                        <h3 class="panel-title">
+                            <span class="icon">⭐</span>
+                            맞춤 추천
+                        </h3>
+
+                        <!-- Recommendation Tabs -->
+                        <div class="recommendation-tabs">
+                            <button class="rec-tab active" data-rec="destinations">여행지</button>
+                            <button class="rec-tab" data-rec="restaurants">맛집</button>
+                            <button class="rec-tab" data-rec="hotels">숙소</button>
+                        </div>
+
+                        <!-- Recommendation Content -->
+                        <div class="recommendation-content">
+                            <div id="destinations-rec" class="rec-cards active"></div>
+                            <div id="restaurants-rec" class="rec-cards" style="display: none;"></div>
+                            <div id="hotels-rec" class="rec-cards" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Trips Tab -->
+            <section id="my-trips-tab" class="tab-content">
+                <div class="my-trips-container">
+                    <h2 class="section-heading">내 여행 계획</h2>
+                    <div class="saved-trips" id="saved-trips">
+                        <div class="empty-state">
+                            <span class="empty-icon">🧳</span>
+                            <p>저장된 여행 계획이 없습니다</p>
+                            <p class="empty-subtitle">여행 계획을 저장하고 관리하세요</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations Tab -->
+            <section id="recommendations-tab" class="tab-content">
+                <div class="recommendations-container">
+                    <h2 class="section-heading">인기 추천 여행지</h2>
+
+                    <div class="popular-destinations">
+                        <h3 class="subsection-title">국내 인기 여행지</h3>
+                        <div class="destination-grid" id="domestic-popular"></div>
+                    </div>
+
+                    <div class="popular-destinations">
+                        <h3 class="subsection-title">해외 인기 여행지</h3>
+                        <div class="destination-grid" id="international-popular"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2025 Global Travel Planner. 모든 권리 보유.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">이용약관</a>
+                <a href="#" class="footer-link">개인정보처리방침</a>
+                <a href="#" class="footer-link">고객센터</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">여행 계획을 생성하고 있습니다...</p>
+    </div>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
