@@ -35,14 +35,23 @@ const LocationData = {
     },
     international: {
         popular: [
+            '인천국제공항 (Incheon Airport)',
+            '김포국제공항 (Gimpo Airport)',
             'Paris Charles de Gaulle Airport',
-            'Tokyo Station',
-            'Times Square NYC',
-            'London Heathrow Airport',
+            'Tokyo Narita Airport',
             'Bangkok Suvarnabhumi Airport',
             'Singapore Changi Airport'
         ],
         suggestions: [
+            // 한국 국제공항
+            '인천국제공항 (Incheon International Airport)',
+            '김포국제공항 (Gimpo International Airport)',
+            '김해국제공항 (Gimhae International Airport)',
+            '제주국제공항 (Jeju International Airport)',
+            '대구국제공항 (Daegu International Airport)',
+            '청주국제공항 (Cheongju International Airport)',
+            '무안국제공항 (Muan International Airport)',
+            // 해외 공항 및 명소
             'Paris Charles de Gaulle Airport', 'Eiffel Tower Paris',
             'Tokyo Station', 'Tokyo Narita Airport', 'Shibuya Tokyo',
             'Times Square NYC', 'JFK Airport New York',
@@ -52,7 +61,10 @@ const LocationData = {
             'Dubai International Airport', 'Burj Khalifa Dubai',
             'Rome Fiumicino Airport', 'Colosseum Rome',
             'Barcelona Airport', 'Sagrada Familia Barcelona',
-            'Sydney Airport', 'Sydney Opera House'
+            'Sydney Airport', 'Sydney Opera House',
+            'Hong Kong International Airport', 'Victoria Peak Hong Kong',
+            'Taipei Taoyuan Airport', 'Taipei 101',
+            'Shanghai Pudong Airport', 'The Bund Shanghai'
         ]
     }
 };
@@ -102,45 +114,45 @@ const TransportationData = {
 const RecommendationData = {
     domestic: {
         destinations: [
-            { name: '남산타워', location: '서울', rating: 4.5, reviews: 1523, tags: ['관광', '야경', '데이트'], image: '' },
-            { name: '해운대 해수욕장', location: '부산', rating: 4.7, reviews: 2341, tags: ['해변', '수영', '가족'], image: '' },
-            { name: '성산일출봉', location: '제주', rating: 4.8, reviews: 3421, tags: ['자연', '등산', '일출'], image: '' },
-            { name: '경복궁', location: '서울', rating: 4.6, reviews: 1876, tags: ['역사', '문화', '한복'], image: '' },
-            { name: '설악산', location: '강원', rating: 4.9, reviews: 2567, tags: ['등산', '자연', '단풍'], image: '' },
-            { name: '불국사', location: '경주', rating: 4.7, reviews: 1234, tags: ['역사', '문화', '유네스코'], image: '' }
+            { name: '남산타워', location: '서울', rating: 4.5, reviews: 1523, tags: ['관광', '야경', '데이트'], image: 'https://images.unsplash.com/photo-1601899197944-1b4a2d1c6976?w=800&h=600&fit=crop' },
+            { name: '해운대 해수욕장', location: '부산', rating: 4.7, reviews: 2341, tags: ['해변', '수영', '가족'], image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop' },
+            { name: '성산일출봉', location: '제주', rating: 4.8, reviews: 3421, tags: ['자연', '등산', '일출'], image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop' },
+            { name: '경복궁', location: '서울', rating: 4.6, reviews: 1876, tags: ['역사', '문화', '한복'], image: 'https://images.unsplash.com/photo-1555217851-6141535bd771?w=800&h=600&fit=crop' },
+            { name: '설악산', location: '강원', rating: 4.9, reviews: 2567, tags: ['등산', '자연', '단풍'], image: 'https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800&h=600&fit=crop' },
+            { name: '불국사', location: '경주', rating: 4.7, reviews: 1234, tags: ['역사', '문화', '유네스코'], image: 'https://images.unsplash.com/photo-1578193661550-3d89c9a0c7e5?w=800&h=600&fit=crop' }
         ],
         restaurants: [
-            { name: '광장시장', location: '서울', rating: 4.4, reviews: 987, tags: ['전통음식', '분식', '시장'], image: '' },
-            { name: '자갈치 시장', location: '부산', rating: 4.5, reviews: 1432, tags: ['해산물', '회', '시장'], image: '' },
-            { name: '흑돼지거리', location: '제주', rating: 4.6, reviews: 2134, tags: ['고기', '흑돼지', '현지음식'], image: '' },
-            { name: '전주 한옥마을', location: '전주', rating: 4.5, reviews: 876, tags: ['한정식', '비빔밥', '전통'], image: '' }
+            { name: '광장시장', location: '서울', rating: 4.4, reviews: 987, tags: ['전통음식', '분식', '시장'], image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&h=600&fit=crop' },
+            { name: '자갈치 시장', location: '부산', rating: 4.5, reviews: 1432, tags: ['해산물', '회', '시장'], image: 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=800&h=600&fit=crop' },
+            { name: '흑돼지거리', location: '제주', rating: 4.6, reviews: 2134, tags: ['고기', '흑돼지', '현지음식'], image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop' },
+            { name: '전주 한옥마을', location: '전주', rating: 4.5, reviews: 876, tags: ['한정식', '비빔밥', '전통'], image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=800&h=600&fit=crop' }
         ],
         hotels: [
-            { name: '롯데호텔 서울', location: '서울', rating: 4.8, reviews: 3421, tags: ['럭셔리', '명동', '쇼핑'], image: '' },
-            { name: '파라다이스 호텔 부산', location: '부산', rating: 4.7, reviews: 2156, tags: ['해변', '카지노', '리조트'], image: '' },
-            { name: '신라스테이 제주', location: '제주', rating: 4.6, reviews: 1789, tags: ['비즈니스', '공항근처', '편리'], image: '' }
+            { name: '롯데호텔 서울', location: '서울', rating: 4.8, reviews: 3421, tags: ['럭셔리', '명동', '쇼핑'], image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop' },
+            { name: '파라다이스 호텔 부산', location: '부산', rating: 4.7, reviews: 2156, tags: ['해변', '카지노', '리조트'], image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop' },
+            { name: '신라스테이 제주', location: '제주', rating: 4.6, reviews: 1789, tags: ['비즈니스', '공항근처', '편리'], image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=600&fit=crop' }
         ]
     },
     international: {
         destinations: [
-            { name: 'Eiffel Tower', location: 'Paris, France', rating: 4.8, reviews: 45234, tags: ['Landmark', 'Romantic', 'Photo'], image: '' },
-            { name: 'Tokyo Tower', location: 'Tokyo, Japan', rating: 4.6, reviews: 32156, tags: ['Landmark', 'City View', 'Night'], image: '' },
-            { name: 'Statue of Liberty', location: 'New York, USA', rating: 4.7, reviews: 38921, tags: ['History', 'Monument', 'Culture'], image: '' },
-            { name: 'Big Ben', location: 'London, UK', rating: 4.5, reviews: 28765, tags: ['History', 'Architecture', 'Photo'], image: '' },
-            { name: 'Grand Palace', location: 'Bangkok, Thailand', rating: 4.9, reviews: 41234, tags: ['Temple', 'Culture', 'History'], image: '' },
-            { name: 'Marina Bay', location: 'Singapore', rating: 4.8, reviews: 35678, tags: ['Modern', 'Skyline', 'Luxury'], image: '' }
+            { name: 'Eiffel Tower', location: 'Paris, France', rating: 4.8, reviews: 45234, tags: ['Landmark', 'Romantic', 'Photo'], image: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800&h=600&fit=crop' },
+            { name: 'Tokyo Tower', location: 'Tokyo, Japan', rating: 4.6, reviews: 32156, tags: ['Landmark', 'City View', 'Night'], image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop' },
+            { name: 'Statue of Liberty', location: 'New York, USA', rating: 4.7, reviews: 38921, tags: ['History', 'Monument', 'Culture'], image: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&h=600&fit=crop' },
+            { name: 'Big Ben', location: 'London, UK', rating: 4.5, reviews: 28765, tags: ['History', 'Architecture', 'Photo'], image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop' },
+            { name: 'Grand Palace', location: 'Bangkok, Thailand', rating: 4.9, reviews: 41234, tags: ['Temple', 'Culture', 'History'], image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=600&fit=crop' },
+            { name: 'Marina Bay', location: 'Singapore', rating: 4.8, reviews: 35678, tags: ['Modern', 'Skyline', 'Luxury'], image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=600&fit=crop' }
         ],
         restaurants: [
-            { name: 'Le Jules Verne', location: 'Paris, France', rating: 4.7, reviews: 3421, tags: ['Fine Dining', 'French', 'Eiffel Tower'], image: '' },
-            { name: 'Sukiyabashi Jiro', location: 'Tokyo, Japan', rating: 4.9, reviews: 2134, tags: ['Sushi', 'Michelin Star', 'Traditional'], image: '' },
-            { name: 'Katz\'s Delicatessen', location: 'New York, USA', rating: 4.6, reviews: 5432, tags: ['Deli', 'American', 'Historic'], image: '' },
-            { name: 'Dishoom', location: 'London, UK', rating: 4.5, reviews: 4123, tags: ['Indian', 'Breakfast', 'Trendy'], image: '' }
+            { name: 'Le Jules Verne', location: 'Paris, France', rating: 4.7, reviews: 3421, tags: ['Fine Dining', 'French', 'Eiffel Tower'], image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop' },
+            { name: 'Sukiyabashi Jiro', location: 'Tokyo, Japan', rating: 4.9, reviews: 2134, tags: ['Sushi', 'Michelin Star', 'Traditional'], image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&h=600&fit=crop' },
+            { name: 'Katz\'s Delicatessen', location: 'New York, USA', rating: 4.6, reviews: 5432, tags: ['Deli', 'American', 'Historic'], image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop' },
+            { name: 'Dishoom', location: 'London, UK', rating: 4.5, reviews: 4123, tags: ['Indian', 'Breakfast', 'Trendy'], image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&h=600&fit=crop' }
         ],
         hotels: [
-            { name: 'The Ritz Paris', location: 'Paris, France', rating: 4.9, reviews: 8765, tags: ['Luxury', '5-Star', 'Historic'], image: '' },
-            { name: 'Park Hyatt Tokyo', location: 'Tokyo, Japan', rating: 4.8, reviews: 6543, tags: ['Luxury', 'Modern', 'City View'], image: '' },
-            { name: 'The Plaza Hotel', location: 'New York, USA', rating: 4.7, reviews: 9876, tags: ['Luxury', 'Historic', '5th Avenue'], image: '' },
-            { name: 'The Savoy', location: 'London, UK', rating: 4.8, reviews: 7654, tags: ['Luxury', 'Thames View', 'Historic'], image: '' }
+            { name: 'The Ritz Paris', location: 'Paris, France', rating: 4.9, reviews: 8765, tags: ['Luxury', '5-Star', 'Historic'], image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop' },
+            { name: 'Park Hyatt Tokyo', location: 'Tokyo, Japan', rating: 4.8, reviews: 6543, tags: ['Luxury', 'Modern', 'City View'], image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop' },
+            { name: 'The Plaza Hotel', location: 'New York, USA', rating: 4.7, reviews: 9876, tags: ['Luxury', 'Historic', '5th Avenue'], image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop' },
+            { name: 'The Savoy', location: 'London, UK', rating: 4.8, reviews: 7654, tags: ['Luxury', 'Thames View', 'Historic'], image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=600&fit=crop' }
         ]
     }
 };
@@ -793,7 +805,9 @@ function displayRecommendationCards(category, items) {
 
     container.innerHTML = items.slice(0, 6).map(item => `
         <div class="rec-card">
-            <div class="rec-card-image">${generatePlaceholderImage(item.name)}</div>
+            <img class="rec-card-image" src="${item.image}" alt="${item.name}" loading="lazy"
+                 onerror="this.style.display='none'; this.nextElementSibling.innerHTML='${generatePlaceholderImageHTML(item.name)}'; this.nextElementSibling.style.display='flex';">
+            <div class="rec-card-image-fallback" style="display: none; width: 100%; height: 180px; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
             <div class="rec-card-content">
                 <div class="rec-card-title">${item.name}</div>
                 <div class="rec-card-location">📍 ${item.location}</div>
@@ -809,14 +823,10 @@ function displayRecommendationCards(category, items) {
     `).join('');
 }
 
-function generatePlaceholderImage(name) {
+function generatePlaceholderImageHTML(name) {
     const emojis = ['🏖️', '🏔️', '🏛️', '🌆', '🌉', '🗼', '🎡', '🎢', '🎪', '🎨'];
     const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    return `
-        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 3rem;">
-            ${emoji}
-        </div>
-    `;
+    return `<div style="font-size: 3rem;">${emoji}</div>`;
 }
 
 function generateStars(rating) {
@@ -842,21 +852,21 @@ function switchRecommendationTab(tab) {
 // Display Popular Destinations
 function displayPopularDestinations() {
     const domesticData = [
-        { name: '서울', country: '대한민국', emoji: '🏙️' },
-        { name: '부산', country: '대한민국', emoji: '🏖️' },
-        { name: '제주', country: '대한민국', emoji: '🌴' },
-        { name: '강릉', country: '대한민국', emoji: '⛰️' },
-        { name: '경주', country: '대한민국', emoji: '🏛️' },
-        { name: '전주', country: '대한민국', emoji: '🏘️' }
+        { name: '서울', country: '대한민국', image: 'https://images.unsplash.com/photo-1601899197944-1b4a2d1c6976?w=800&h=600&fit=crop' },
+        { name: '부산', country: '대한민국', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop' },
+        { name: '제주', country: '대한민국', image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop' },
+        { name: '강릉', country: '대한민국', image: 'https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800&h=600&fit=crop' },
+        { name: '경주', country: '대한민국', image: 'https://images.unsplash.com/photo-1578193661550-3d89c9a0c7e5?w=800&h=600&fit=crop' },
+        { name: '전주', country: '대한민국', image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=800&h=600&fit=crop' }
     ];
 
     const internationalData = [
-        { name: 'Paris', country: 'France', emoji: '🗼' },
-        { name: 'Tokyo', country: 'Japan', emoji: '🗾' },
-        { name: 'New York', country: 'USA', emoji: '🗽' },
-        { name: 'London', country: 'UK', emoji: '🎡' },
-        { name: 'Bangkok', country: 'Thailand', emoji: '🏯' },
-        { name: 'Singapore', country: 'Singapore', emoji: '🌆' }
+        { name: 'Paris', country: 'France', image: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800&h=600&fit=crop' },
+        { name: 'Tokyo', country: 'Japan', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop' },
+        { name: 'New York', country: 'USA', image: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&h=600&fit=crop' },
+        { name: 'London', country: 'UK', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop' },
+        { name: 'Bangkok', country: 'Thailand', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=600&fit=crop' },
+        { name: 'Singapore', country: 'Singapore', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=600&fit=crop' }
     ];
 
     displayDestinationGrid('domestic-popular', domesticData);
@@ -868,9 +878,8 @@ function displayDestinationGrid(containerId, destinations) {
 
     container.innerHTML = destinations.map(dest => `
         <div class="destination-card">
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 4rem;">
-                ${dest.emoji}
-            </div>
+            <img class="destination-image" src="${dest.image}" alt="${dest.name}" loading="lazy"
+                 style="width: 100%; height: 100%; object-fit: cover;">
             <div class="destination-overlay">
                 <div class="destination-name">${dest.name}</div>
                 <div class="destination-country">${dest.country}</div>
