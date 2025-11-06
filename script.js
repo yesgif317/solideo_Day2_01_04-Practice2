@@ -1111,11 +1111,13 @@ function generateRecommendations() {
 function displayRecommendationCards(category, items) {
     const container = document.getElementById(`${category}-rec`);
 
-    container.innerHTML = items.slice(0, 6).map(item => `
+    container.innerHTML = items.slice(0, 6).map((item, index) => `
         <div class="rec-card">
             <img class="rec-card-image" src="${item.image}" alt="${item.name}" loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.innerHTML='${generatePlaceholderImageHTML(item.name)}'; this.nextElementSibling.style.display='flex';">
-            <div class="rec-card-image-fallback" style="display: none; width: 100%; height: 180px; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                 onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="rec-card-image-fallback" style="display: none; width: 100%; height: 180px; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 3rem;">
+                ${getPlaceholderEmoji(index)}
+            </div>
             <div class="rec-card-content">
                 <div class="rec-card-title">${item.name}</div>
                 <div class="rec-card-location">📍 ${item.location}</div>
@@ -1131,10 +1133,9 @@ function displayRecommendationCards(category, items) {
     `).join('');
 }
 
-function generatePlaceholderImageHTML(name) {
+function getPlaceholderEmoji(index) {
     const emojis = ['🏖️', '🏔️', '🏛️', '🌆', '🌉', '🗼', '🎡', '🎢', '🎪', '🎨'];
-    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    return `<div style="font-size: 3rem;">${emoji}</div>`;
+    return emojis[index % emojis.length];
 }
 
 function generateStars(rating) {
